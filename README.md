@@ -12,7 +12,7 @@ and show a live spectrum on a display and a NeoPixel strip.
 
 - Microphone module 
 - display
-- NeoPixel strip (LED strip)
+- LED Matrix matice 8x8 s MAX7219
 
 ## Block diagram
 ```mermaid
