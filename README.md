@@ -3,8 +3,8 @@
 DE2 team project – Raspberry Pi Pico W, MicroPython.
 
 ## Goal
-Sample audio from a microphone, split it into frequency bands
-and show a live spectrum on a display and a NeoPixel strip.
+Sample audio from audio input, split it into frequency bands
+and show a live spectrum on a display and a MAX LED Matrix.
 
 ## Hardware
 - Raspberry Pi Pico W
