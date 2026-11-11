@@ -28,7 +28,7 @@ flowchart LR
     C0 -->|úrovně pásem| C1[Jádro 1<br/>zobrazení + ovládání]
   end
   C1 -->|SPI0 GP17–21| LCD[Nokia 5110<br/>84×48 px]
-  C1 -->|PIO GP15| LED[NeoPixel<br/>WS2812B]
+  C1 -->|PIO GP15| LED[MAX<br/>7219]
   BTN[Tlačítko GP14] --> C1
   C1 <-->|USB serial| PC[PC<br/>Python záznam]
   PWR[USB 5 V] --> PICO
