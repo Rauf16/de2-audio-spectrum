@@ -12,7 +12,7 @@ and show a live spectrum on a display and a MAX LED Matrix.
 
 - Jack 3.5mm input
 - display
-<img width="128" height="128" alt="image" src="https://github.com/user-attachments/assets/c1d298a4-ec08-4874-bff5-692898a997c2" />
+<img width="228" height="228" alt="image" src="https://github.com/user-attachments/assets/c1d298a4-ec08-4874-bff5-692898a997c2" />
 
 
 - LED Matrix matice 8x8 s MAX7219
