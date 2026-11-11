@@ -12,6 +12,8 @@ and show a live spectrum on a display and a NeoPixel strip.
 
 - Microphone module 
 - display
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/2fcf1492-7268-43d3-8904-05f418e8c995" />
+
 - LED Matrix matice 8x8 s MAX7219
 
 ## Block diagram
