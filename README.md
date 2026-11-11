@@ -10,7 +10,7 @@ and show a live spectrum on a display and a NeoPixel strip.
 - Raspberry Pi Pico W
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/883dc884-b437-44a1-a93d-39bec083df4f" />
 
-- Microphone module 
+- Jack 3.5mm input
 - display
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/2fcf1492-7268-43d3-8904-05f418e8c995" />
 
@@ -29,7 +29,7 @@ flowchart LR
     BUF --> C0[Jádro 0<br/>okno + FFT + 16 pásem]
     C0 -->|úrovně pásem| C1[Jádro 1<br/>zobrazení + ovládání]
   end
-  C1 -->|SPI0 GP17–21| LCD[Nokia 5110<br/>84×48 px]
+  C1 -->|SPI0 GP17–21| LCD[SH1106<br/>128x64 px]
   C1 -->|PIO GP15| LED[MAX<br/>7219]
   BTN[Tlačítko GP14] --> C1
   C1 <-->|USB serial| PC[PC<br/>Python záznam]
@@ -60,3 +60,8 @@ bla bla bla
 
 ## Conclusion
 Thank you for attention
+
+## Poznamky
+Co bude na displayi? 
+Sehnat soucastky
+Bude potreba zesilovac?
