@@ -35,6 +35,12 @@ flowchart LR
   PWR --> LED
 ```
 
+## Structure
+bla bla bla
+
+## Functions
+bla bla bla
+
 ## Team
 | Name | Part |
 | --- | --- |
