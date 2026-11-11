@@ -1,5 +1,4 @@
 # de2-audio-spectrum
-Malina, Iusupov, Kapaňa
 ```mermaid
 flowchart LR
   SRC[Zdroj zvuku<br/>mobil / PC] -->|3,5mm jack L+R| MIX
