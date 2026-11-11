@@ -1,2 +1,21 @@
 # de2-audio-spectrum
 Malina, Iusupov, Kapaňa
+```mermaid
+flowchart LR
+  SRC[Zdroj zvuku<br/>mobil / PC] -->|3,5mm jack L+R| MIX
+  subgraph AFE[Analogový vstup]
+    MIX[Součet L+R<br/>2× 10k] --> CAP[Oddělovací C<br/>1 µF] --> BIAS[Posun na 1,65 V<br/>dělič 2× 100k] --> AMP[Zesilovač<br/>MCP6002] --> LPF[Dolní propust<br/>~16 kHz]
+  end
+  LPF -->|0–3,3 V| ADC
+  subgraph PICO[Raspberry Pi Pico]
+    ADC[ADC0 GP26<br/>40 kHz] -->|DMA| BUF[Dvojitý buffer<br/>2× 1024 vzorků]
+    BUF --> C0[Jádro 0<br/>okno + FFT + 16 pásem]
+    C0 -->|úrovně pásem| C1[Jádro 1<br/>zobrazení + ovládání]
+  end
+  C1 -->|SPI0 GP17–21| LCD[Nokia 5110<br/>84×48 px]
+  C1 -->|PIO GP15| LED[NeoPixel<br/>WS2812B]
+  BTN[Tlačítko GP14] --> C1
+  C1 <-->|USB serial| PC[PC<br/>Python záznam]
+  PWR[USB 5 V] --> PICO
+  PWR --> LED
+```
