@@ -1,5 +1,3 @@
-# de2-audio-spectrum
-
 # Audio spectrum analyzer
 
 DE2 team project – Raspberry Pi Pico W, MicroPython.
