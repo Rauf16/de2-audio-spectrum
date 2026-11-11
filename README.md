@@ -11,7 +11,7 @@ and show a live spectrum on a display and a MAX LED Matrix.
 <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/883dc884-b437-44a1-a93d-39bec083df4f" />
 
 - Jack 3.5mm input
-<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/e299277f-993a-43c2-a2d3-b405b7eb8120" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/e299277f-993a-43c2-a2d3-b405b7eb8120" />
 
 - display
 <img width="228" height="228" alt="image" src="https://github.com/user-attachments/assets/c1d298a4-ec08-4874-bff5-692898a997c2" />
