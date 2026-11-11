@@ -36,10 +36,9 @@ and show a live spectrum on a display and a NeoPixel strip.
 ## Team
 | Name | Part |
 | --- | --- |
-| Rauf Iusupov | hardware, wiring, leds.py |
-| … | mic.py |
-| … | spectrum.py |
-| … | display.py |
+| Rauf Iusupov | ... |
+| Marek Malina | ... |
+| Jaroslav Kapaňa | ... |
 
 ## Planned files
 - `main.py` – main loop
