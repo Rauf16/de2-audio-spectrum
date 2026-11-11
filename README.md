@@ -35,6 +35,14 @@ flowchart LR
   PWR --> LED
 ```
 
+## Planned files
+- `main.py` – main loop
+- `config.py` – pins and settings
+- `mic.py` – ADC sampling
+- `spectrum.py` – FFT and frequency bands
+- `display.py` – bars on the display
+- `leds.py` – NeoPixel output
+
 ## Structure
 bla bla bla
 
@@ -48,10 +56,5 @@ bla bla bla
 | Marek Malina | ... |
 | Jaroslav Kapaňa | ... |
 
-## Planned files
-- `main.py` – main loop
-- `config.py` – pins and settings
-- `mic.py` – ADC sampling
-- `spectrum.py` – FFT and frequency bands
-- `display.py` – bars on the display
-- `leds.py` – NeoPixel output
+## Conclusion
+Thank you for attention
