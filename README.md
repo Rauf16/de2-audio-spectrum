@@ -8,7 +8,7 @@ and show a live spectrum on a display and a NeoPixel strip.
 
 ## Hardware
 - Raspberry Pi Pico W
-<img width="800" height="800" alt="image" src="https://github.com/user-attachments/assets/883dc884-b437-44a1-a93d-39bec083df4f" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/883dc884-b437-44a1-a93d-39bec083df4f" />
 
 - Microphone module 
 - display
