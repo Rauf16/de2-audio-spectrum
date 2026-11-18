@@ -42,7 +42,8 @@ and which musical note is playing.
 
 ## Hardware
 - Raspberry Pi Pico W
-<img width="400" height="400" alt="Raspberry Pi Pico W" src="https://github.com/user-attachments/assets/883dc884-b437-44a1-a93d-39bec083df4f" />
+<img width="381" height="362" alt="image" src="https://github.com/user-attachments/assets/4b0e7267-abc3-4ef9-97b1-bd217b710f5b" />
+
 
 - 3.5 mm jack input (terminal block adapter)
 <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/5e017909-6b22-43fe-9363-4b1f72a9ab33" />
