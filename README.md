@@ -75,6 +75,18 @@ bla bla bla
 ### Button – GP14
 - short press = switch mode (Spectrum / Loudness)
 
+## Component tests
+
+| Component | Interface / pins | Test file | Status |
+| --- | --- | --- | --- |
+| OLED SH1106 128×64 – Mode 1 layout (spectrum) | I2C0, GP4/GP5 | `tests/test_oled.py` | works |
+| OLED SH1106 128×64 – Mode 2 layout (loudness) | I2C0, GP4/GP5 | `tests/test_mode2.py` | works |
+| LED matrix 8×8 MAX7219 | SPI0, GP17/GP18/GP19 | `tests/test_matrix.py` | not tested yet |
+| Audio input (jack + analog front-end) | ADC0, GP26 | `tests/test_adc.py` | not tested yet |
+| Button (mode select) | GPIO, GP14 | `tests/test_button.py` | not tested yet |
+
+Tests for Modes 1 and 2 use generated test data, not real audio yet.
+
 ## Team
 | Name | Part |
 | --- | --- |
