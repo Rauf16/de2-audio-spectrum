@@ -45,7 +45,8 @@ and which musical note is playing.
 <img width="400" height="400" alt="Raspberry Pi Pico W" src="https://github.com/user-attachments/assets/883dc884-b437-44a1-a93d-39bec083df4f" />
 
 - 3.5 mm jack input (terminal block adapter)
-<img width="300" height="300" alt="3.5 mm jack adapter" src="https://github.com/user-attachments/assets/e299277f-993a-43c2-a2d3-b405b7eb8120" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/5e017909-6b22-43fe-9363-4b1f72a9ab33" />
+
 
 - RGB LED matrix 8×8 NeoPixel WS2812B
 <img width="310" height="310" alt="RGB LED matrix WS2812B" src="https://github.com/user-attachments/assets/c2abd4b4-54a5-4cb0-95b8-2cf05734dea7" />
