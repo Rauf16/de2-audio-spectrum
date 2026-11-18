@@ -13,8 +13,9 @@ and show a live spectrum on a display and a MAX LED Matrix.
 - Jack 3.5mm input
 <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/e299277f-993a-43c2-a2d3-b405b7eb8120" />
 
-- display
-<img width="228" height="228" alt="image" src="https://github.com/user-attachments/assets/c1d298a4-ec08-4874-bff5-692898a997c2" />
+- display RGB LED matice 8 x 8 Neopixel WS2812B
+<img width="310" height="310" alt="image" src="https://github.com/user-attachments/assets/c2abd4b4-54a5-4cb0-95b8-2cf05734dea7" />
+
 
 
 - LED Matrix matice 8x8 s MAX7219
