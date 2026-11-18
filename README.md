@@ -102,9 +102,6 @@ flowchart TB
   PICO <-->|USB serial| PC
   PWR -->|VBUS 5 V<br/>+ 1000 µF| RGB
 ```
-test
-<img width="1465" height="227" alt="image" src="https://github.com/user-attachments/assets/a57818a9-c733-43f8-913f-6cf92eae279c" />
-
 
 
 ## Pinout
