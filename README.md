@@ -86,8 +86,6 @@ and which musical note is playing.
 
 ## Block diagram
 
-![Block diagram](docs/block_diagram.png)
-
 <details>
 <summary>Mermaid source</summary>
 
