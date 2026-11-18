@@ -9,6 +9,16 @@ Plug in a phone or PC through a 3.5 mm jack and the device instantly shows
 what the sound is made of: which frequencies it contains, how loud it is,
 and which musical note is playing.
 
+### Why it is useful
+- **Musicians** can tune an instrument with the built-in tuner (±5 cents)
+  without a phone app or a separate tuner.
+- **Recording and streaming:** the loudness mode shows RMS and peak level
+  in dBFS and warns before the signal clips, so distortion is caught early.
+- **Music visualization:** the RGB matrix turns any music into a live,
+  colourful spectrum.
+- **Education:** it makes signal processing visible – sampling, frequency
+  bands, decibels and FFT are shown live instead of only in formulas.
+
 ### What the project demonstrates
 - **Analog design:** summing L+R channels, DC bias to 1.65 V and an
   anti-aliasing low-pass filter, so a line-level signal can be safely
@@ -42,71 +52,80 @@ and which musical note is playing.
 
 ## Hardware
 - Raspberry Pi Pico W
-<img width="381" height="362" alt="image" src="https://github.com/user-attachments/assets/4b0e7267-abc3-4ef9-97b1-bd217b710f5b" />
-
+<img width="381" height="362" alt="Raspberry Pi Pico W" src="https://github.com/user-attachments/assets/4b0e7267-abc3-4ef9-97b1-bd217b710f5b" />
 
 - 3.5 mm jack input (terminal block adapter)
-<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/5e017909-6b22-43fe-9363-4b1f72a9ab33" />
-
+<img width="300" height="300" alt="3.5 mm jack adapter" src="https://github.com/user-attachments/assets/5e017909-6b22-43fe-9363-4b1f72a9ab33" />
 
 - RGB LED matrix 8×8 NeoPixel WS2812B
 <img width="310" height="310" alt="RGB LED matrix WS2812B" src="https://github.com/user-attachments/assets/c2abd4b4-54a5-4cb0-95b8-2cf05734dea7" />
 
 - OLED display SH1106 128×64, I2C
-<img width="347" height="347" alt="image" src="https://github.com/user-attachments/assets/26414cce-aebc-4082-8466-b7432d8be895" />
-
+<img width="347" height="347" alt="OLED display SH1106" src="https://github.com/user-attachments/assets/26414cce-aebc-4082-8466-b7432d8be895" />
 
 ### Bill of materials
 
-| Part | Qty | Status |
-| --- | --- | --- |
-| Raspberry Pi Pico W + DFRobot Pico Gravity Board | 1 | have |
-| OLED display SH1106 128×64, I2C | 1 | have |
-| Breadboard, jumper wires, USB cable | – | have |
-| AUX cable 3.5 mm jack–jack | 1 | have |
-| RGB LED matrix 8×8 WS2812B | 1 | to get |
-| 3.5 mm jack to terminal block adapter | 1 | to get |
-| Push button | 1 | to get |
-| Resistor 10 kΩ | 2 | to get |
-| Resistor 100 kΩ | 2 | to get |
-| Resistor 1 kΩ | 1 | to get |
-| Resistor 330 Ω | 1 | to get |
-| Capacitor 1 µF | 1 | to get |
-| Capacitor 10 nF | 1 | to get |
-| Capacitor 1000 µF / 10 V | 1 | to get |
-| Level shifter 74AHCT125 (optional) | 1 | only if the matrix does not respond reliably |
+| Part | Qty | Datasheet / docs | Status |
+| --- | --- | --- | --- |
+| Raspberry Pi Pico W (RP2040) | 1 | [Pico W](https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf), [RP2040](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf) | have |
+| DFRobot Gravity Expansion Board for Pico (DFR0848) | 1 | [wiki](https://wiki.dfrobot.com/DFR0848) | have |
+| OLED display SH1106 128×64, I2C | 1 | [SH1106](https://www.crystalfontz.com/controllers/SinoWealth/SH1106) | have |
+| Breadboard, jumper wires, USB cable | – | – | have |
+| AUX cable 3.5 mm jack–jack | 1 | – | have |
+| RGB LED matrix 8×8 WS2812B | 1 | [WS2812B](https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf) | to get |
+| 3.5 mm jack to terminal block adapter | 1 | – | to get |
+| Push button | 1 | – | to get |
+| Resistor 10 kΩ | 2 | – | to get |
+| Resistor 100 kΩ | 2 | – | to get |
+| Resistor 1 kΩ | 1 | – | to get |
+| Resistor 330 Ω | 1 | – | to get |
+| Capacitor 1 µF | 1 | – | to get |
+| Capacitor 10 nF | 1 | – | to get |
+| Capacitor 1000 µF / 10 V | 1 | – | to get |
+| Level shifter 74AHCT125 (optional) | 1 | [SN74AHCT125](https://www.ti.com/lit/ds/symlink/sn74ahct125.pdf) | only if the matrix does not respond reliably |
 
 ## Block diagram
+
+![Block diagram](docs/block_diagram.png)
+
+<details>
+<summary>Mermaid source</summary>
+
 ```mermaid
 flowchart TB
-  SRC[Zdroj zvuku<br/>mobil / PC]
+  SRC[Audio source<br/>phone / PC]
 
-  subgraph AFE[Analogový vstup]
+  subgraph AFE[Analog front-end]
     direction LR
-    MIX[Součet L+R<br/>2× 10k] --> CAP[Oddělovací C<br/>1 µF] --> BIAS[Posun na 1,65 V<br/>dělič 2× 100k] --> LPF[Dolní propust<br/>~16 kHz]
+    MIX[L+R summing<br/>2× 10k] --> CAP[DC blocking<br/>1 µF] --> BIAS[Bias to 1.65 V<br/>divider 2× 100k] --> LPF[Low-pass filter<br/>~16 kHz]
   end
 
   subgraph PICO[Raspberry Pi Pico W]
     direction LR
-    ADC[ADC0 GP26<br/>40 kHz] -->|DMA| BUF[Dvojitý buffer<br/>2× 1024 vzorků] --> C0[Jádro 0<br/>okno + FFT<br/>32 + 8 pásem] -->|úrovně pásem| C1[Jádro 1<br/>zobrazení + ovládání]
+    ADC[ADC0 GP26<br/>40 kHz] -->|DMA| BUF[Double buffer<br/>2× 1024 samples] --> C0[Core 0<br/>window + FFT<br/>32 + 8 bands] -->|band levels| C1[Core 1<br/>display + control]
   end
 
-  BTN[Tlačítko GP14]
+  BTN[Button GP14]
   PWR[USB 5 V]
-  OLED[OLED SH1106<br/>128×64 px<br/>detailní spektrum]
-  RGB[RGB matice 8×8<br/>WS2812B<br/>8 pásem]
-  PC[PC<br/>Python záznam]
+  OLED[OLED SH1106<br/>128×64 px<br/>detailed spectrum]
+  RGB[RGB matrix 8×8<br/>WS2812B<br/>8 bands]
+  PC[PC<br/>Python logging]
 
-  SRC -->|3,5mm jack L+R| AFE
-  AFE -->|0–3,3 V| PICO
+  SRC -->|3.5 mm jack L+R| AFE
+  AFE -->|0–3.3 V| PICO
   BTN --> PICO
   PWR --> PICO
   PICO -->|I2C0 SDA/SCL| OLED
-  PICO -->|PIO GP15<br/>přes 330 Ω| RGB
+  PICO -->|PIO GP15<br/>via 330 Ω| RGB
   PICO <-->|USB serial| PC
   PWR -->|VBUS 5 V<br/>+ 1000 µF| RGB
 ```
 
+</details>
+
+## Wiring diagram
+
+TBD – full schematic of the analog front-end, OLED, RGB matrix and button (`docs/wiring.png`).
 
 ## Pinout
 
@@ -125,6 +144,31 @@ Board: Raspberry Pi Pico W on DFRobot Pico Gravity Board.
 | Analog front-end | supply | 3V3(OUT) | 36 | Analog – 3V3 |
 | Button | signal | GP14 | 19 | Digital – GP14 |
 
+## Timing of tasks
+
+Planned values, to be verified by measurement.
+
+| Task | Runs on | Rate / period | Note |
+| --- | --- | --- | --- |
+| ADC sampling | DMA | 40 kHz | no CPU load |
+| New block ready | DMA → core 0 | every 25.6 ms | 1024 samples / 40 kHz |
+| Window + FFT + bands | core 0 | once per block | must finish in < 25.6 ms, otherwise smaller block or `ulab` |
+| Loudness / tuner calculation | core 0 | once per block | depends on the active mode |
+| OLED refresh | core 1 | target ~20 fps (50 ms) | full frame over I2C at 400 kHz takes ≈ 25 ms |
+| RGB matrix refresh | core 1 | target ~30 fps | data for 64 LEDs ≈ 2 ms |
+| Button check | core 1 | every 10 ms | 50 ms debounce, long press ≥ 1 s |
+| USB serial logging | core 1 | optional, ~10 Hz | for recording on PC |
+
+## Project schedule
+
+| Week | Focus | Rauf Iusupov | Marek Malina | Jaroslav Kapaňa |
+| --- | --- | --- | --- | --- |
+| 1 | Proposal and architecture | components, BOM | block diagram | repository, README |
+| 2 | Device modules | analog front-end, ADC test, wiring diagram | FFT speed test, band calculation | OLED, RGB matrix and button tests |
+| 3 | Integration | Mode 2 Loudness, matrix power | Mode 1 Spectrum | Mode 3 Tuner, `main.py`, dual-core |
+| 4 | Verification and polish | measurements with real audio | performance tuning | edge cases, documentation |
+| 5 | Demonstration | poster, video, demo | poster, video, demo | poster, video, demo |
+
 ## Software and libraries
 
 | Item | Version / source | Used for |
@@ -135,21 +179,32 @@ Board: Raspberry Pi Pico W on DFRobot Pico Gravity Board.
 | `math`, `time`, `random` | built-in | calculations, timing, test data |
 | `sh1106.py` | driver supplied in DE2 Lab 6 | OLED display |
 | `ulab` | planned, only if pure-Python FFT is too slow | FFT |
-| Thonny | x.x (fill in) | IDE |
+| Thonny | TBD | IDE |
 
-## Repository structure (planned)
+## Repository structure
 
 ```
-main.py           main loop, mode switching
-config.py         pins and settings
-audio_input.py    ADC sampling
-spectrum.py       FFT and frequency bands (Mode 1)
-loudness.py       RMS, peak, clipping (Mode 2)
-tuner.py          dominant frequency, note, cents (Mode 3)
-display.py        OLED output
-matrix.py         RGB LED matrix output
-lib/sh1106.py     OLED driver
-tests/            component tests
+de2-audio-spectrum/
+├── README.md
+├── main.py               main loop, mode switching (TBD)
+├── config.py             pins and settings (TBD)
+├── audio_input.py        ADC sampling (TBD)
+├── spectrum.py           FFT and frequency bands – Mode 1 (TBD)
+├── loudness.py           RMS, peak, clipping – Mode 2 (TBD)
+├── tuner.py              dominant frequency, note, cents – Mode 3 (TBD)
+├── display.py            OLED output (TBD)
+├── matrix.py             RGB LED matrix output (TBD)
+├── lib/
+│   └── sh1106.py         OLED driver
+├── tests/
+│   ├── test_oled.py      OLED – Mode 1 layout
+│   ├── test_mode2.py     OLED – Mode 2 layout
+│   ├── test_matrix.py    RGB matrix (TBD)
+│   ├── test_adc.py       audio input (TBD)
+│   └── test_button.py    button (TBD)
+└── docs/
+    ├── block_diagram.png
+    └── wiring.png        (TBD)
 ```
 
 ## Classes / API (draft)
