@@ -16,11 +16,6 @@ and show a live spectrum on a display and a MAX LED Matrix.
 - display RGB LED matice 8 x 8 Neopixel WS2812B
 <img width="310" height="310" alt="image" src="https://github.com/user-attachments/assets/c2abd4b4-54a5-4cb0-95b8-2cf05734dea7" />
 
-
-
-- LED Matrix matice 8x8 s MAX7219
-<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/2fcf1492-7268-43d3-8904-05f418e8c995" />
-
 ## Block diagram
 ```mermaid
 flowchart LR
