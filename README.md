@@ -92,6 +92,9 @@ flowchart LR
   PWR[USB 5 V] --> PICO
   PWR -->|VBUS 5 V<br/>+ 1000 µF| RGB
 ```
+test
+<img width="1573" height="330" alt="image" src="https://github.com/user-attachments/assets/7d26e876-9942-4223-a2de-a29628ef5557" />
+
 
 ## Pinout
 
