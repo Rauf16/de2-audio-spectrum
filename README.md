@@ -52,6 +52,8 @@ and which musical note is playing.
 <img width="310" height="310" alt="RGB LED matrix WS2812B" src="https://github.com/user-attachments/assets/c2abd4b4-54a5-4cb0-95b8-2cf05734dea7" />
 
 - OLED display SH1106 128×64, I2C
+<img width="347" height="347" alt="image" src="https://github.com/user-attachments/assets/26414cce-aebc-4082-8466-b7432d8be895" />
+
 
 ### Bill of materials
 
