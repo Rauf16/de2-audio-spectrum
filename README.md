@@ -46,10 +46,10 @@ flowchart LR
 - `leds.py` – NeoPixel output
 
 ## Structure
-bla bla bla
+TBD
 
 ## Functions
-bla bla bla
+TBD
 
 ## Classes / API (draft)
 
