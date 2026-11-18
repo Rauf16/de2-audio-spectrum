@@ -93,7 +93,7 @@ flowchart LR
   PWR -->|VBUS 5 V<br/>+ 1000 µF| RGB
 ```
 test
-<img width="1573" height="330" alt="image" src="https://github.com/user-attachments/assets/7d26e876-9942-4223-a2de-a29628ef5557" />
+<img width="2500" height="670" alt="image" src="https://github.com/user-attachments/assets/7d26e876-9942-4223-a2de-a29628ef5557" />
 
 
 ## Pinout
