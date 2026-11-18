@@ -3,8 +3,24 @@
 DE2 team project – Raspberry Pi Pico W, MicroPython.
 
 ## Goal
-Sample audio from a 3.5 mm audio input, split it into frequency bands
-and show a live spectrum on an OLED display and an RGB LED matrix.
+
+A pocket-size, real-time audio analyzer built on a Raspberry Pi Pico W.
+Plug in a phone or PC through a 3.5 mm jack and the device instantly shows
+what the sound is made of: which frequencies it contains, how loud it is,
+and which musical note is playing.
+
+### What the project demonstrates
+- **Analog design:** summing L+R channels, DC bias to 1.65 V and an
+  anti-aliasing low-pass filter, so a line-level signal can be safely
+  measured by the 3.3 V ADC.
+- **Fast sampling:** ADC at 40 kHz with DMA into a double buffer.
+- **Digital signal processing on a microcontroller:** windowing, FFT,
+  band levels in dB, RMS/peak measurement and pitch detection.
+- **Dual-core design:** core 0 processes the audio, core 1 drives the
+  displays and the button, so the picture stays smooth.
+- **Two outputs:** a detailed view on the OLED (I2C) and a colourful
+  overview on the 8×8 RGB LED matrix (WS2812B).
+- **Simple control:** three modes switched with a single button.
 
 ## Modes
 
