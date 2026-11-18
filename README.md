@@ -194,9 +194,10 @@ Tests for Modes 1 and 2 use generated test data, not real audio yet.
 
 | Name | Part |
 | --- | --- |
-| Rauf Iusupov | … |
-| Marek Malina | … |
-| Jaroslav Kapaňa | … |
+| Rauf Iusupov | Hardware + Mode 2 Loudness (RMS, peak, clipping, VU meter) |
+| Marek Malina | Mode 1 Spectrum (FFT, 8 bands, peak hold) |
+| Jaroslav Kapaňa | Mode 3 Tuner + main.py, button, mode switching |
+| All | README, poster, video, testing |
 
 ## Open questions
 - Is an amplifier needed? Not for now, decide after testing the audio input.
