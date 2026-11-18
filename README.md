@@ -51,6 +51,30 @@ bla bla bla
 ## Functions
 bla bla bla
 
+## Classes / API (draft)
+
+### `AudioInput` – audio_input.py
+- `AudioInput(pin=26, n=256)` – ADC input on GP26
+- `read_block()` → list of n samples (0–65535)
+
+### `Spectrum` – spectrum.py
+- `bands(samples)` → 8 levels in dB (63 Hz, 125 Hz … 8 kHz)
+
+### `Loudness` – loudness.py
+- `measure(samples)` → (rms_dbfs, peak_dbfs, clip)
+
+### `OledView` – display.py
+- `show_spectrum(levels)` – Mode 1
+- `show_loudness(rms, peak, clip)` – Mode 2
+
+### `Matrix` – matrix.py
+- `bars(heights)` – 8 columns, height 0–8
+- `vu(level, clip)` – full-width VU meter, top row blinks on clip
+- `clear()`
+
+### Button – GP14
+- short press = switch mode (Spectrum / Loudness)
+
 ## Team
 | Name | Part |
 | --- | --- |
