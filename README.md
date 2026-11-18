@@ -118,7 +118,7 @@ flowchart TB
 
 ## Wiring diagram
 
-TBD – full schematic of the analog front-end, OLED, RGB matrix and button (`docs/wiring.png`).
+TBD – full schematic of the analog front-end, OLED, RGB matrix and button.
 
 ## Pinout
 
