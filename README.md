@@ -86,9 +86,6 @@ and which musical note is playing.
 
 ## Block diagram
 
-<details>
-<summary>Mermaid source</summary>
-
 ```mermaid
 flowchart TB
   SRC[Audio source<br/>phone / PC]
@@ -118,8 +115,6 @@ flowchart TB
   PICO <-->|USB serial| PC
   PWR -->|VBUS 5 V<br/>+ 1000 µF| RGB
 ```
-
-</details>
 
 ## Wiring diagram
 
