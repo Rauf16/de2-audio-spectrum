@@ -25,20 +25,20 @@ and show a live spectrum on a display and a MAX LED Matrix.
 flowchart LR
   SRC[Zdroj zvuku<br/>mobil / PC] -->|3,5mm jack L+R| MIX
   subgraph AFE[Analogový vstup]
-    MIX[Součet L+R<br/>2× 10k] --> CAP[Oddělovací C<br/>1 µF] --> BIAS[Posun na 1,65 V<br/>dělič 2× 100k] --> AMP[Zesilovač<br/>MCP6002] --> LPF[Dolní propust<br/>~16 kHz]
+    MIX[Součet L+R<br/>2× 10k] --> CAP[Oddělovací C<br/>1 µF] --> BIAS[Posun na 1,65 V<br/>dělič 2× 100k] --> LPF[Dolní propust<br/>~16 kHz]
   end
   LPF -->|0–3,3 V| ADC
-  subgraph PICO[Raspberry Pi Pico]
+  subgraph PICO[Raspberry Pi Pico W]
     ADC[ADC0 GP26<br/>40 kHz] -->|DMA| BUF[Dvojitý buffer<br/>2× 1024 vzorků]
-    BUF --> C0[Jádro 0<br/>okno + FFT + 16 pásem]
+    BUF --> C0[Jádro 0<br/>okno + FFT<br/>32 + 8 pásem]
     C0 -->|úrovně pásem| C1[Jádro 1<br/>zobrazení + ovládání]
   end
-  C1 -->|SPI0 GP17–21| LCD[SH1106<br/>128x64 px]
-  C1 -->|PIO GP15| LED[MAX<br/>7219]
+  C1 -->|I2C0 SDA/SCL| OLED[OLED SH1106<br/>128×64 px<br/>detailní spektrum]
+  C1 -->|PIO GP15<br/>přes 330 Ω| RGB[RGB matice 8×8<br/>WS2812B<br/>8 pásem]
   BTN[Tlačítko GP14] --> C1
   C1 <-->|USB serial| PC[PC<br/>Python záznam]
   PWR[USB 5 V] --> PICO
-  PWR --> LED
+  PWR -->|VBUS 5 V<br/>+ 1000 µF| RGB
 ```
 
 ## Planned files
@@ -66,6 +66,38 @@ bla bla bla
 Thank you for attention
 
 ## Poznamky
-Co bude na displayi? 
+Režim 1 Spektrum: zobrazuje rozložení zvuku do 8 frekvenčních pásem (63, 125, 250, 500 Hz, 1, 2, 4, 8 kHz).
+Display: úroveň každého pásma v dB a jeho frekvence
+Matice: 8 barevných sloupců (zelená → žlutá → červená) s držením špičky
+
+Režim 2 Hlasitost: měří úroveň signálu v dBFS.
+Display: RMS, Sample peak,  varování CLIP
+Matice: celoplošný VU metr, při clippingu bliká horní řádek červeně
+
+Režim 3 Ladička: určuje dominantní frekvenci.
+Display: tón (např. A), frekvence v Hz, odchylka v centech, šipka doleva nebo doprava podle směru podlazení k nejbližšímu tónu. 
+Matice: zelená = naladěno (±5 centů), červená = rozladěno
+
+Ovládání: krátký stisk tlačítka přepne režim, dlouhý vynuluje maximum a držení špičky.
+
 Sehnat soucastky
-Bude potreba zesilovac?
+
+Raspberry Pi Pico W + rozšiřující deska (máme)
+OLED displej SH1106 128×64, I2C (máme)
+Nepájivé pole (máme)
+Propojovací kabely (máme)
+USB kabel (máme)
+AUX kabel 3,5mm jack–jack (máme)
+RGB LED matice 8×8 WS2812B
+3,5mm jack (adaptér na svorkovnici)
+Tlačítko
+Rezistor 10k – 2×
+Rezistor 100k – 2×
+Rezistor 1k – 1×
+Rezistor 330 Ω – 1×
+Kondenzátor 1 µF – 1×
+Kondenzátor 10 nF – 1×
+Kondenzátor 1000 µF / 10 V – 1×
+(volitelně) převodník úrovní 74AHCT125 - je možné že LED matice nebude plně reagovat a bude potřeba přidat tento převodník. Není však nutný 
+
+Bude potreba zesilovac? - zatím ne, uvidíme při testování 
