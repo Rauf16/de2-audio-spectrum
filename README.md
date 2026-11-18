@@ -74,22 +74,32 @@ and which musical note is playing.
 
 ## Block diagram
 ```mermaid
-flowchart LR
-  SRC[Zdroj zvuku<br/>mobil / PC] -->|3,5mm jack L+R| MIX
+flowchart TB
+  SRC[Zdroj zvuku<br/>mobil / PC]
+
   subgraph AFE[Analogový vstup]
+    direction LR
     MIX[Součet L+R<br/>2× 10k] --> CAP[Oddělovací C<br/>1 µF] --> BIAS[Posun na 1,65 V<br/>dělič 2× 100k] --> LPF[Dolní propust<br/>~16 kHz]
   end
-  LPF -->|0–3,3 V| ADC
+
   subgraph PICO[Raspberry Pi Pico W]
-    ADC[ADC0 GP26<br/>40 kHz] -->|DMA| BUF[Dvojitý buffer<br/>2× 1024 vzorků]
-    BUF --> C0[Jádro 0<br/>okno + FFT<br/>32 + 8 pásem]
-    C0 -->|úrovně pásem| C1[Jádro 1<br/>zobrazení + ovládání]
+    direction LR
+    ADC[ADC0 GP26<br/>40 kHz] -->|DMA| BUF[Dvojitý buffer<br/>2× 1024 vzorků] --> C0[Jádro 0<br/>okno + FFT<br/>32 + 8 pásem] -->|úrovně pásem| C1[Jádro 1<br/>zobrazení + ovládání]
   end
-  C1 -->|I2C0 SDA/SCL| OLED[OLED SH1106<br/>128×64 px<br/>detailní spektrum]
-  C1 -->|PIO GP15<br/>přes 330 Ω| RGB[RGB matice 8×8<br/>WS2812B<br/>8 pásem]
-  BTN[Tlačítko GP14] --> C1
-  C1 <-->|USB serial| PC[PC<br/>Python záznam]
-  PWR[USB 5 V] --> PICO
+
+  BTN[Tlačítko GP14]
+  PWR[USB 5 V]
+  OLED[OLED SH1106<br/>128×64 px<br/>detailní spektrum]
+  RGB[RGB matice 8×8<br/>WS2812B<br/>8 pásem]
+  PC[PC<br/>Python záznam]
+
+  SRC -->|3,5mm jack L+R| AFE
+  AFE -->|0–3,3 V| PICO
+  BTN --> PICO
+  PWR --> PICO
+  PICO -->|I2C0 SDA/SCL| OLED
+  PICO -->|PIO GP15<br/>přes 330 Ω| RGB
+  PICO <-->|USB serial| PC
   PWR -->|VBUS 5 V<br/>+ 1000 µF| RGB
 ```
 test
