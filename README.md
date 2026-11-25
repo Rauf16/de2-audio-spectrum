@@ -153,15 +153,6 @@ Planned values, to be verified by measurement.
 | Button check | core 1 | every 10 ms | 50 ms debounce, long press ≥ 1 s |
 | USB serial logging | core 1 | optional, ~10 Hz | for recording on PC |
 
-## Project schedule
-
-| Week | Focus | Rauf Iusupov | Marek Malina | Jaroslav Kapaňa |
-| --- | --- | --- | --- | --- |
-| 1 | Proposal and architecture | components, BOM | block diagram | repository, README |
-| 2 | Device modules | analog front-end, ADC test, wiring diagram | FFT speed test, band calculation | OLED, RGB matrix and button tests |
-| 3 | Integration | Mode 2 Loudness, matrix power | Mode 1 Spectrum | Mode 3 Tuner, `main.py`, dual-core |
-| 4 | Verification and polish | measurements with real audio | performance tuning | edge cases, documentation |
-| 5 | Demonstration | poster, video, demo | poster, video, demo | poster, video, demo |
 
 ## Software and libraries
 
